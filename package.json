@@ -9,7 +9,7 @@
 	"scripts": {
 		"start": "node dist/app.js",
 		"dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-		"build": "npm install && tsc",
+		"build": "tsc",
 		"lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
 		"lint:fix": "eslint src/**/*.ts{,x} --fix",
 		"lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
