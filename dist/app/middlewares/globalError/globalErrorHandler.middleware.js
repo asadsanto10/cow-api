@@ -16,37 +16,37 @@ const globalErrorHandler = (error, req, res, next) => {
     let statusCode = 500;
     let message = 'something went wrong!';
     let errorMessage = [];
-    if (error?.name === 'ValidationError') {
+    if ((error === null || error === void 0 ? void 0 : error.name) === 'ValidationError') {
         const validationError = (0, validationErrorHandler_1.default)(error);
-        statusCode = validationError?.statusCode;
-        message = validationError?.message;
-        errorMessage = validationError?.errorMessage;
+        statusCode = validationError === null || validationError === void 0 ? void 0 : validationError.statusCode;
+        message = validationError === null || validationError === void 0 ? void 0 : validationError.message;
+        errorMessage = validationError === null || validationError === void 0 ? void 0 : validationError.errorMessage;
     }
     else if (error instanceof zod_1.ZodError) {
         const zodError = (0, zodErrorHandler_1.default)(error);
-        statusCode = zodError?.statusCode;
-        message = zodError?.message;
-        errorMessage = zodError?.errorMessage;
+        statusCode = zodError === null || zodError === void 0 ? void 0 : zodError.statusCode;
+        message = zodError === null || zodError === void 0 ? void 0 : zodError.message;
+        errorMessage = zodError === null || zodError === void 0 ? void 0 : zodError.errorMessage;
     }
     else if (error instanceof apiError_1.default) {
-        statusCode = error?.statusCode;
+        statusCode = error === null || error === void 0 ? void 0 : error.statusCode;
         message = error.message;
-        errorMessage = error?.message
+        errorMessage = (error === null || error === void 0 ? void 0 : error.message)
             ? [
                 {
                     path: '',
-                    message: error?.message,
+                    message: error === null || error === void 0 ? void 0 : error.message,
                 },
             ]
             : [];
     }
     else if (error instanceof Error) {
-        message = error?.message;
-        errorMessage = error?.message
+        message = error === null || error === void 0 ? void 0 : error.message;
+        errorMessage = (error === null || error === void 0 ? void 0 : error.message)
             ? [
                 {
                     path: '',
-                    message: error?.message,
+                    message: error === null || error === void 0 ? void 0 : error.message,
                 },
             ]
             : [];
@@ -55,7 +55,7 @@ const globalErrorHandler = (error, req, res, next) => {
         status: false,
         message,
         errorMessage,
-        stack: config_1.default.nodeENV !== 'production' ? error?.stack : undefined,
+        stack: config_1.default.nodeENV !== 'production' ? error === null || error === void 0 ? void 0 : error.stack : undefined,
     });
     next();
 };

@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const zodErrorHandler = (error) => {
     const errors = error.issues.map((issue) => ({
-        path: issue?.path[issue.path.length - 1],
-        message: issue?.message,
+        path: issue === null || issue === void 0 ? void 0 : issue.path[issue.path.length - 1],
+        message: issue === null || issue === void 0 ? void 0 : issue.message,
     }));
     const statusCode = 400;
     return {
