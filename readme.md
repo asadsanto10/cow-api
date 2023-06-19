@@ -3,7 +3,7 @@
 ## API:
 
 ```http
- https://cow-hut-backend-ten.vercel.app
+ https://cow-api-three.vercel.app/api/v1
 ```
 
 ### Application Routes:
